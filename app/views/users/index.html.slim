@@ -1,0 +1,11 @@
+h1 hi
+table.table
+  tr
+    th
+    - @users.each do |user|
+      th = user.email
+  - @games.each do |game|
+    tr
+      td = "#{game.name} (#{game.date})"
+      - @users.each do |user|
+        td = game.visited_by(user).try(:status) || 'Unknown'
