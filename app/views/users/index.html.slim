@@ -1,9 +1,9 @@
-h1 hi
-table.table
+table#tblheader
   tr
-    th
+    td Game
     - @users.each do |user|
-      th = user.email
+      td = user.email
+table#tblbody
   - @games.each do |game|
     tr
       td = "#{game.name} (#{game.date})"

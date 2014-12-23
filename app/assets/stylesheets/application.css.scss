@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+
+#tblheader {
+  position: fixed;
+  z-index: 52;
+  width:98%;
+  text-align:center;
+  padding: 0px;
+  background: #fff;
+}
+
+#tblbody {
+  position: absolute;
+  z-index: 50;
+  width:98%;
+  text-align:center;
+  line-height: 1em;
+  margin-top: 80px;
+  padding: 0px;
+  overflow: auto;
+}
+#tblbody tr {
+  min-height: 35px;
+  height: auto;
+  padding: 0px;
+}
+#tblheader tr {
+  height: 60px;
+}
+td:first-child {
+  width: 27%
+}
+td {
+  width: 12%;
+  height: 80px;
+  text-align:center;
+  word-wrap: break-word;
+}
