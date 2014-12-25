@@ -6,7 +6,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'bootstrap-sass'
@@ -17,7 +17,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'enumerize'
 gem 'nested_form'
-
+gem 'angularjs-rails'
 group :development do
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'
