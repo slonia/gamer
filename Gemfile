@@ -15,6 +15,9 @@ gem 'cancancan'
 gem 'pg'
 gem 'simple_form'
 gem 'slim-rails'
+gem 'enumerize'
+gem 'nested_form'
+
 group :development do
   gem 'capistrano', '~> 3.0.1'
   gem 'capistrano-bundler'

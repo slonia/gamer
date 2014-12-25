@@ -1,0 +1,11 @@
+h1 hi
+table.table
+  thead
+    tr
+      th name
+      th action
+  tbody
+    - @teams.each do |team|
+      tr
+        td = team.name
+        td = 'act'
