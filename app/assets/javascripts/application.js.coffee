@@ -4,6 +4,7 @@
 #= require_self
 #= require_tree ./config
 #= require_tree ./controllers
+#= require_tree ./directives
 #= require_tree ./resources
 
 dependencies = [

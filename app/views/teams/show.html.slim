@@ -3,7 +3,7 @@ table#tblheader.flat-table.flat-table-3
     th Game
     th ng-repeat="user in users"
       | {{user}}
-table#tblbody.flat-table.flat-table-3
+table#tblbody.flat-table.flat-table-3 scroll-action="load_games"
   tr ng-repeat="game in games"
     td
       | {{game.name}}
