@@ -4,7 +4,7 @@
 
 html, body, main {
   height: 100%;
-  background-color: #eee;
+  background-color: #367588;
 }
 // make all images responsive by default
 img {
@@ -39,7 +39,6 @@ img {
 // to make views framework-neutral
 main {
   @extend .container;
-  background-color: #eee;
   padding-bottom: 80px;
   width: 100%;
   }

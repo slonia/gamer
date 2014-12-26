@@ -1,8 +1,7 @@
 class TeamsController
-  @$inject = ['$scope']
+  @$inject = ['$scope', 'Team']
 
-  constructor: (@$scope) ->
-    debugger
-    console.log('ok')
+  constructor: (@$scope, @Team) ->
+    @$scope.teams = @Team.query()
 
 angular.module('Gamer').controller 'TeamsController', TeamsController

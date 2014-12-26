@@ -1,1 +1,5 @@
 h1 Show
+ul
+  li ng-repeat="team in teams"
+    a ui-sref="team({slug: team.slug})"
+      | {{team.name}}

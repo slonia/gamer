@@ -1,1 +1,13 @@
-h1 hi
+table#tblheader.flat-table.flat-table-3
+  tr
+    th Game
+    th ng-repeat="user in users"
+      | {{user}}
+table#tblbody.flat-table.flat-table-3
+  tr ng-repeat="game in games"
+    td
+      | {{game.name}}
+      | {{game.date}}
+    td ng-repeat="user in game.users"
+      | {{user.status || 'N/A'}}
+button style="position: fixed; bottom: 0; z-index: 200" ng-click="load_games()" Load more

@@ -4,6 +4,28 @@ class Team < ActiveRecord::Base
 
   before_save :set_slug
 
+  validates :slug, presence: true, uniqueness: true
+
+  def team_json(page = nil)
+    page = page ? page.to_i : 1
+    games = Game.active.page(page)
+    users = self.users.includes(:game_visits)
+    result = []
+    games.each do |game|
+      record = {name: game.name, date: game.date }
+      users_array = []
+      users.each do |user|
+        users_array << {
+          name: user.name,
+          status: user.game_visits.find{ |g| g.game_id == game.id }.try(:status)
+        }
+      end
+      record[:users] = users_array
+      result << record
+    end
+    result
+  end
+
   private
 
     def set_slug
