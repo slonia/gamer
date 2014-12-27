@@ -22,5 +22,13 @@ module Gamer
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.generators do |generate|
+      generate.helper false
+      generate.assets false
+      generate.view_specs false
+      generate.test_framework nil
+    end
+
+    config.assets.precompile += %w( admin.js )
   end
 end

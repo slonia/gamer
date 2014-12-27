@@ -12,12 +12,13 @@ class Team < ActiveRecord::Base
     users = self.users.includes(:game_visits)
     result = []
     games.each do |game|
-      record = {name: game.name, date: game.date }
+      record = {name: game.name, date: game.date.strftime('%d.%m.%y - %H:%M'), id: game.id }
       users_array = []
       users.each do |user|
         users_array << {
           name: user.name,
-          status: user.game_visits.find{ |g| g.game_id == game.id }.try(:status)
+          status: user.game_visits.find{ |g| g.game_id == game.id }.try(:status),
+          id: user.id
         }
       end
       record[:users] = users_array
