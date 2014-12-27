@@ -13,6 +13,7 @@ class TeamsController < ApplicationController
     if request.xhr?
       if params[:page].nil? || (params[:page].to_s == '1')
         render json: {
+          current_user: current_user.id,
           users: @team.users.pluck(:name),
           games: @team.team_json,
           max_pages: Game.active.page(1).total_pages

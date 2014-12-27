@@ -10,5 +10,7 @@ table#tblbody.flat-table.flat-table-3 scroll-action="load_games"
       br
       | {{game.date}}
     td ng-repeat="user in game.users"
-      select.flat-select ng-change="set_game_visit(game.id, user.id, current_status)" ng-options="status for status in status_options" ng-model="current_status" ng-init="current_status = user.status || 'unknown'"
+      select.flat-select ng-show="current_user == user.id" ng-change="set_game_visit(game.id, current_status)" ng-options="status for status in status_options" ng-model="current_status" ng-init="current_status = user.status || 'unknown'"
+      div ng-hide="current_user == user.id"
+        | {{user.status || 'unknown'}}
 button style="position: fixed; bottom: 0; z-index: 200" ng-click="load_games()" Load more
