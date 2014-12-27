@@ -12,7 +12,12 @@ class Team < ActiveRecord::Base
     users = self.users.includes(:game_visits)
     result = []
     games.each do |game|
-      record = {name: game.name, date: game.date.strftime('%d.%m.%y - %H:%M'), id: game.id }
+      record = {
+        name: game.name,
+        date: game.date.strftime('%d.%m'),
+        time: game.date.strftime('%H:%M'),
+        id: game.id
+      }
       users_array = []
       users.each do |user|
         users_array << {

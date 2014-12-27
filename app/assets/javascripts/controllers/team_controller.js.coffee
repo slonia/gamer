@@ -1,7 +1,16 @@
 class TeamController
   @$inject = ['$scope', '$stateParams', 'usSpinnerService', 'Team', 'GameVisit']
 
-  OPTIONS = [ 'visited', 'not_visited', 'unknown' ]
+  OPTIONS = [
+    value: 'visited'
+    text: 'Буду'
+  ,
+    value: 'not_visited'
+    text: 'Не буду'
+  ,
+    value: 'unknown'
+    text: 'Неизвестно'
+  ]
 
   constructor: (@$scope, @$stateParams, @usSpinnerService, @Team, @GameVisit) ->
     @$scope.games = []
@@ -10,6 +19,7 @@ class TeamController
     @$scope.status_options = OPTIONS
     @$scope.load_games = @load_games
     @$scope.set_game_visit = @set_game_visit
+    @$scope.translate = @translate
     @$scope.scrollable = true
     @load_games()
 
@@ -32,4 +42,8 @@ class TeamController
   set_game_visit: (game_id, status) =>
     @GameVisit.set(game_id: game_id, status: status)
 
+  translate: (status = 'unknown') =>
+    for option in OPTIONS
+      if option.value == status
+        return option.text
 angular.module('Gamer').controller 'TeamController', TeamController

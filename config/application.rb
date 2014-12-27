@@ -30,5 +30,6 @@ module Gamer
     end
 
     config.assets.precompile += %w( admin.js )
+    config.i18n.default_locale = :ru
   end
 end

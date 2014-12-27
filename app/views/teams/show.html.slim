@@ -2,17 +2,21 @@ div us-spinner=true spinner-key="games_init" spinner-start-active="true" ng-hide
 div ng-show="users.length"
   table#tblheader.flat-table.flat-table-3
     tr
-      th GAME
+      th = t('.games').upcase
       th ng-repeat="user in users"
         | {{user | uppercase}}
   table#tblbody.flat-table.flat-table-3 scroll-action="load_games"
     tr ng-repeat="game in games"
-      td
-        | {{game.name}}
-        br
-        | {{game.date}}
+      td.first-cell
+        .game-date
+          span.date
+            | {{game.date}}
+          span.time
+            | {{game.time}}
+        .game-title
+          | {{game.name}}
       td ng-repeat="user in game.users"
-        select.flat-select ng-show="current_user == user.id" ng-change="set_game_visit(game.id, current_status)" ng-options="status for status in status_options" ng-model="current_status" ng-init="current_status = user.status || 'unknown'"
+        select.flat-select ng-show="current_user == user.id" ng-change="set_game_visit(game.id, current_status.value)" ng-options="status.text for status in status_options track by status.value" ng-model="current_status" ng-init="current_status = {value: (user.status || 'unknown'), text: translate(user.status)}"
         div ng-hide="current_user == user.id"
-          | {{user.status || 'unknown'}}
+          | {{translate(user.status)}}
   button style="position: fixed; bottom: 0; z-index: 200" ng-click="load_games()" Load more
