@@ -15,4 +15,16 @@ class ApplicationController < ActionController::Base
         'application'
       end
     end
+
+    def after_sign_in_path_for(resource)
+      if resource.admin?
+        root_path
+      else
+        if resource.team
+          team_path(resource.team.slug)
+        else
+          root_path
+        end
+      end
+    end
 end

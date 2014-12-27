@@ -21,6 +21,7 @@
   width:98%;
   text-align:center;
   padding: 0px;
+  text-transform: uppercase;
 }
 
 #tblbody {
@@ -42,13 +43,14 @@
   height: 60px;
 }
 td:first-child, th:first-child {
-  width: 27%
+  width: 27% !important;
 }
 td, th {
-  width: 12%;
+  width: 12% !important;
   height: 80px;
   text-align:center;
   word-wrap: break-word;
+  word-break: break-all;
 }
 
 

@@ -1,9 +1,9 @@
 class TeamController
-  @$inject = ['$scope', '$stateParams', 'Team', 'GameVisit']
+  @$inject = ['$scope', '$stateParams', 'usSpinnerService', 'Team', 'GameVisit']
 
   OPTIONS = [ 'visited', 'not_visited', 'unknown' ]
 
-  constructor: (@$scope, @$stateParams, @Team, @GameVisit) ->
+  constructor: (@$scope, @$stateParams, @usSpinnerService, @Team, @GameVisit) ->
     @$scope.games = []
     @$scope.users = []
     @$scope.current_user = null
@@ -23,6 +23,7 @@ class TeamController
           @$scope.users = data.users
           @$scope.max_pages = data.max_pages
           @$scope.current_user = data.current_user
+          @usSpinnerService.stop('games_init')
         else
           Array::push.apply @$scope.games, data.games
         @$scope.current_page = page

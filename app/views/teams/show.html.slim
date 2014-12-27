@@ -1,16 +1,18 @@
-table#tblheader.flat-table.flat-table-3 ng-show="users != []"
-  tr
-    th Game
-    th ng-repeat="user in users"
-      | {{user}}
-table#tblbody.flat-table.flat-table-3 scroll-action="load_games"
-  tr ng-repeat="game in games"
-    td
-      | {{game.name}}
-      br
-      | {{game.date}}
-    td ng-repeat="user in game.users"
-      select.flat-select ng-show="current_user == user.id" ng-change="set_game_visit(game.id, current_status)" ng-options="status for status in status_options" ng-model="current_status" ng-init="current_status = user.status || 'unknown'"
-      div ng-hide="current_user == user.id"
-        | {{user.status || 'unknown'}}
-button style="position: fixed; bottom: 0; z-index: 200" ng-click="load_games()" Load more
+div us-spinner=true spinner-key="games_init" spinner-start-active="true" ng-hide="users.length"
+div ng-show="users.length"
+  table#tblheader.flat-table.flat-table-3
+    tr
+      th GAME
+      th ng-repeat="user in users"
+        | {{user | uppercase}}
+  table#tblbody.flat-table.flat-table-3 scroll-action="load_games"
+    tr ng-repeat="game in games"
+      td
+        | {{game.name}}
+        br
+        | {{game.date}}
+      td ng-repeat="user in game.users"
+        select.flat-select ng-show="current_user == user.id" ng-change="set_game_visit(game.id, current_status)" ng-options="status for status in status_options" ng-model="current_status" ng-init="current_status = user.status || 'unknown'"
+        div ng-hide="current_user == user.id"
+          | {{user.status || 'unknown'}}
+  button style="position: fixed; bottom: 0; z-index: 200" ng-click="load_games()" Load more

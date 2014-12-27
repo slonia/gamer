@@ -1,4 +1,5 @@
 class Game < ActiveRecord::Base
+  paginates_per 5
   has_many :game_visits
   has_many :users, through: :game_visits
 
