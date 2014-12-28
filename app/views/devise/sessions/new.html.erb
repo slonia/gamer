@@ -24,6 +24,8 @@
           </label>
         </div>
       <% end -%>
-      <%= link_to 'Sign in with facebook', user_omniauth_authorize_path(:facebook) %>
+      <%= link_to 'Sign in with facebook', user_omniauth_authorize_path(:facebook) %> <br>
+      <%= link_to 'Sign in with twitter', user_omniauth_authorize_path(:twitter) %> <br>
+      <%= link_to 'Sign in with vkontakte', user_omniauth_authorize_path(:vkontakte) %> <br>
   <% end %>
 </div>

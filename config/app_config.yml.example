@@ -5,6 +5,9 @@ common: &common
   facebook:
     api_key: 'test'
     api_secret: 'test'
+  vkontakte:
+    api_key: 'test'
+    api_secret: 'test'
 
 development:
   <<: *common
