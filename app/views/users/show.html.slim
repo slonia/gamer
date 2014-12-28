@@ -1,0 +1,6 @@
+.box
+  h1
+    | {{user.name}}
+  ul
+    / li = link_to(icon('twitter', 'Twitter', class: 'fa-2x'), user_omniauth_authorize_path(:twitter))
+    li = link_to(icon('facebook', 'Facebook', class: 'fa-2x'), user_omniauth_authorize_path(:facebook))

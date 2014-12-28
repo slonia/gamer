@@ -1,0 +1,13 @@
+common: &common
+  twitter:
+    api_key: 'test'
+    api_secret: 'test'
+  facebook:
+    api_key: 'test'
+    api_secret: 'test'
+
+development:
+  <<: *common
+
+production:
+  <<: *common

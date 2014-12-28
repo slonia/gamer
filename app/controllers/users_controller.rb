@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
 
-  def index
-    @games = Game.all
+  def show
+    @user = current_user
+    if request.xhr?
+      render json: @user.to_json
+    else
+      render text: '', layout: true
+    end
   end
 end

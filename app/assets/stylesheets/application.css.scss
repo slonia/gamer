@@ -138,11 +138,16 @@ td, th {
     padding: 2px;
   }
   .date {
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid #367F55;
+    padding-bottom: 4px;
   }
 }
 .game-title {
   font-size: 1.5em;
   word-break: break-word;
   line-height: 1.5em;
+}
+.box {
+  background-color: #52be7f;
+  color: #fff;
 }
