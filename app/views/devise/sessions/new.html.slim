@@ -1,0 +1,15 @@
+.authform
+  = simple_form_for resource_name, as: resource_name, url: session_path(resource_name) do |f|
+    .input-group
+      .input-group-addon = icon('user')
+      = f.input_field :email, class: 'form-control'
+    .input-group
+      .input-group-addon = icon('key')
+      = f.input_field :password, class: 'form-control'
+    = f.input :remember_me, as: :boolean
+    = f.submit 'Sign in', class: 'btn btn-primary btn-lg btn-block'
+    ul.list-inline.social-login
+      li = link_to(icon('twitter'), user_omniauth_authorize_path(:twitter))
+      li = link_to(icon('facebook'), user_omniauth_authorize_path(:facebook))
+      li = link_to(icon('vk'), user_omniauth_authorize_path(:vkontakte))
+

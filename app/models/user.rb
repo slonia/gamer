@@ -17,14 +17,15 @@ class User < ActiveRecord::Base
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth, signed_in_resource)
+    if identity
+      user = signed_in_resource ? signed_in_resource : identity.user
 
-    user = signed_in_resource ? signed_in_resource : identity.user
-
-    if identity.user != user
-      identity.user = user
-      identity.save!
+      if identity.user != user
+        identity.user = user
+        identity.save!
+      end
+      user
     end
-    user
   end
 
   private
