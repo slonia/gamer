@@ -159,10 +159,10 @@ td, th {
     i {
       border: 4px solid;
       border-radius: 50%;
-      padding: 4px;
       width: 50px;
       height: 50px;
       font-size: 36px;
+      line-height: 44px;
       color: #22a86c !important;
     }
   }
@@ -180,6 +180,9 @@ td, th {
   text-align: center;
   padding: 20px;
 
+  label {
+    color: #d5d5d5 !important;
+  }
   .input-group {
     color: #d5d5d5;
     height: 50px;

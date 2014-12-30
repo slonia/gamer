@@ -1,0 +1,18 @@
+.row
+  .col-xs-6
+    .panel.panel-success
+      .panel-heading
+        h2.panel-title Teams
+      .panel-body
+        ul.list-group
+          li.list-group-item ng-repeat="team in teams"
+            a ui-sref="team({slug: team.slug})"
+              | {{team.name}}
+  .col-xs-6
+    .panel.panel-success
+      .panel-heading
+        h2.panel-title Games
+      .panel-body
+        ul.list-group
+          li.list-group-item ng-repeat="game in games"
+            | {{game.name}}
