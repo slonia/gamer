@@ -1,7 +1,26 @@
-.box
-  h1
-    | {{user.name}}
-  ul
-    li = link_to(icon('twitter', 'Twitter', class: 'fa-2x'), user_omniauth_authorize_path(:twitter), target: '_blank')
-    li = link_to(icon('facebook', 'Facebook', class: 'fa-2x'), user_omniauth_authorize_path(:facebook), target: '_blank')
-    li = link_to(icon('vk', 'Vkontakte', class: 'fa-2x'), user_omniauth_authorize_path(:vkontakte), target: '_blank')
+.row
+  .col-xs-10
+    .panel
+      .panel-heading
+        h2.panel-title
+          | {{user.name}}
+      .panel-body
+        div ng-show="user.team"
+          ' Игрок команды
+          a ui-sref="team({slug: user.team.slug})"
+            | {{user.team.name}}
+        div ng-hide="user.team"
+          ' Игрок без команды
+        ul.profile-social-list
+          li
+            = icon('twitter')
+            span ng-show="connected_to('twitter')" Подключено
+            span ng-hide="connected_to('twitter')" = link_to 'Add', user_omniauth_authorize_path(:twitter), target: '_blank'
+          li
+            = icon('facebook')
+            span ng-show="connected_to('facebook')" Подключено
+            span ng-hide="connected_to('facebook')" = link_to 'Add', user_omniauth_authorize_path(:facebook), target: '_blank'
+          li
+            = icon('vk')
+            span ng-show="connected_to('vkontakte')" Подключено
+            span ng-hide="connected_to('vkontakte')" = link_to 'Add', user_omniauth_authorize_path(:vkontakte), target: '_blank'

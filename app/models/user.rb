@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :game_visits
   has_many :games, through: :game_visits
+  has_many :identities
   belongs_to :team
 
 
@@ -26,6 +27,23 @@ class User < ActiveRecord::Base
       end
       user
     end
+  end
+
+  def data_json
+    identities = self.identities
+    data = {
+      name: name,
+      team: team_info,
+      identities: identities.pluck(:provider)
+    }
+  end
+
+  def team_info
+    return nil unless self.team
+    {
+      name: team.name,
+      slug: team.slug
+    }
   end
 
   private
