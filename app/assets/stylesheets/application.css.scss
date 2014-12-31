@@ -161,4 +161,13 @@ td, th {
     color: #22a86c;
     text-decoration: none;
   }
+  ul {
+    padding: 0px;
+    li {
+      display: inline;
+      list-style-type: none;
+      padding-right: 10px;
+      float: left;
+    }
+  }
 }

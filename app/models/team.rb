@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   has_many :users
   accepts_nested_attributes_for :users
 
-  before_save :set_slug
+  before_validation :set_slug
 
   validates :slug, presence: true, uniqueness: true
 

@@ -9,8 +9,11 @@ class Admin::TeamsController < Admin::AdminController
 
   def create
     # binding.pry
-    @team = Team.create(team_params)
-    redirect_to admin_teams_path
+    if @team = Team.create(team_params)
+      redirect_to admin_teams_path
+    else
+      render 'new'
+    end
   end
 
   private

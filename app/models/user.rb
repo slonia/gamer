@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :validatable, :omniauthable
 
   before_validation :check_password, on: :create
+  after_create :send_email
 
   has_many :game_visits
   has_many :games, through: :game_visits
@@ -50,5 +51,9 @@ class User < ActiveRecord::Base
 
     def check_password
       self.password = Devise.friendly_token.first(8) unless self.password
+    end
+
+    def send_email
+      AppMailer.user_created(self).deliver_now!
     end
 end
