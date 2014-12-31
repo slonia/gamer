@@ -1,5 +1,5 @@
 class TeamController
-  @$inject = ['$scope', '$stateParams', 'usSpinnerService', 'Team', 'GameVisit']
+  @$inject = ['$scope', '$rootScope', '$stateParams', 'usSpinnerService', 'Team', 'GameVisit']
 
   OPTIONS = [
     value: 'visited'
@@ -12,12 +12,14 @@ class TeamController
     text: 'Неизвестно'
   ]
 
-  constructor: (@$scope, @$stateParams, @usSpinnerService, @Team, @GameVisit) ->
+  constructor: (@$scope, @$rootScope, @$stateParams, @usSpinnerService, @Team, @GameVisit) ->
     @$scope.games = []
     @$scope.users = []
     @$scope.current_user = null
+    @$rootScope.show_more_button = true
     @$scope.status_options = OPTIONS
     @$scope.load_games = @load_games
+    @$rootScope.load_games = @load_games
     @$scope.set_game_visit = @set_game_visit
     @$scope.translate = @translate
     @$scope.scrollable = true

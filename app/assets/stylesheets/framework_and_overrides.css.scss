@@ -6,9 +6,12 @@
 
 html, body, main {
   height: 100%;
-  background-color: #3f4649;
+  // background-color: #3f4649;
   min-width: 1000px;
    font-family: 'Lato', Calibri, Arial, sans-serif;
+}
+html, body {
+  background: image-url('back.png');
 }
 // make all images responsive by default
 img {
@@ -97,6 +100,11 @@ section {
       a {
         text-decoration: none;
         color: #d5d5d5;
+        display: block;
+      }
+
+      &:hover {
+        background: rgba(0,0,0,0.1);
       }
     }
 

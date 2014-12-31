@@ -11,5 +11,8 @@ html ng-app="Gamer"
     = javascript_include_tag 'application'
   body
     main ui-view=true
-      a ui-sref="team({slug: 'sarcasm'})" Teams
+    div.floating-panel
+      = link_to 'Logout', destroy_user_session_path, target: '_self'
+      | &nbsp;
+      a href='#' ng-click="$root.load_games()" ng-show="$root.show_more_button" Load more
     = render 'layouts/templates'

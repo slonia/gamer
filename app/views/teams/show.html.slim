@@ -19,4 +19,3 @@ div ng-show="users.length"
         select.flat-select ng-show="current_user == user.id" ng-change="set_game_visit(game.id, current_status.value)" ng-options="status.text for status in status_options track by status.value" ng-model="current_status" ng-init="current_status = {value: (user.status || 'unknown'), text: translate(user.status)}"
         div ng-hide="current_user == user.id"
           | {{translate(user.status)}}
-  button style="position: fixed; bottom: 0; z-index: 200" ng-click="load_games()" Load more

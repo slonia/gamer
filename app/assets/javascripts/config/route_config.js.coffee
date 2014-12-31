@@ -10,5 +10,4 @@ class RouteConfig
       .state('dashboard', url: '/', controller: 'DashboardController', templateUrl: "/dashboard.html" )
       .state('team', url: '/teams/:slug', controller: 'TeamController', templateUrl: '/team.html')
       .state('profile', url: '/profile', controller: 'UsersController', templateUrl: '/profile.html')
-
 angular.module('Gamer').config RouteConfig

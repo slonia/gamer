@@ -29,7 +29,7 @@ module Gamer
       generate.test_framework nil
     end
 
-    config.assets.precompile += %w( admin.js )
+    config.assets.precompile += %w( admin.js login.css)
     config.i18n.default_locale = :ru
   end
 end
