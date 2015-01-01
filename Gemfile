@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.3'
 
-gem 'angularjs-rails'
 gem 'bootstrap-sass'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.1.0'

@@ -13,6 +13,6 @@ html
     main = yield
     div.floating-panel
       ul
-        li = link_to 'Main page', dashboard_index_path
+        li = link_to 'Main page', root_path
         / li: a href='#' ng-click="$root.load_games()"  Load more
         li = link_to 'Logout', destroy_user_session_path, method: :delete
