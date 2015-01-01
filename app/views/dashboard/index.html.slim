@@ -5,15 +5,13 @@
         h2.panel-title Teams
       .panel-body
         ul.list-group
-          li.list-group-item ng-repeat="team in teams"
-            a ui-sref="team({slug: team.slug})"
-              | {{team.name}}
+          - @teams.each do |team|
+            li.list-group-item = link_to team.name, team_path(slug: team.slug)
   .col-xs-6
     .panel.panel-success
       .panel-heading
         h2.panel-title Games
       .panel-body
         ul.list-group
-          li.list-group-item ng-repeat="game in games"
-            a href='#'
-              | {{game.name}}
+          - @games.each do |game|
+            li.list-group-item = game.name

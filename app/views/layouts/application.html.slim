@@ -1,5 +1,5 @@
 doctype html
-html ng-app="Gamer"
+html
   head
     meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     title
@@ -10,12 +10,9 @@ html ng-app="Gamer"
     = stylesheet_link_tag "application"
     = javascript_include_tag 'application'
   body
-    main ui-view=true
+    main = yield
     div.floating-panel
       ul
-        li
-          a ui-sref='dashboard' Main page
-        li ng-show="$root.show_more_button"
-          a href='#' ng-click="$root.load_games()"  Load more
-        li = link_to 'Logout', destroy_user_session_path, target: '_self'
-    = render 'layouts/templates'
+        li = link_to 'Main page', dashboard_index_path
+        / li: a href='#' ng-click="$root.load_games()"  Load more
+        li = link_to 'Logout', destroy_user_session_path, method: :delete

@@ -1,21 +1,20 @@
-div us-spinner=true spinner-key="games_init" spinner-start-active="true" ng-hide="users.length"
-div ng-show="users.length"
+div
   table#tblheader.flat-table.flat-table-3
     tr
       th = t('.games').upcase
-      th ng-repeat="user in users"
-        | {{user | uppercase}}
-  table#tblbody.flat-table.flat-table-3 scroll-action="load_games"
-    tr ng-repeat="game in games"
-      td.first-cell
-        .game-date
-          span.date
-            | {{game.date}}
-          span.time
-            | {{game.time}}
-        .game-title
-          | {{game.name}}
-      td ng-repeat="user in game.users"
-        select.flat-select ng-show="current_user == user.id" ng-change="set_game_visit(game.id, current_status.value)" ng-options="status.text for status in status_options track by status.value" ng-model="current_status" ng-init="current_status = {value: (user.status || 'unknown'), text: translate(user.status)}"
-        div ng-hide="current_user == user.id"
-          | {{translate(user.status)}}
+      - @users.each do |user|
+        th = user.upcase
+  table#tblbody.flat-table.flat-table-3
+    - @games.each do |game|
+      tr
+        td.first-cell
+          .game-date
+            span.date = game[:date]
+            span.time = game[:time]
+          .game-title = game[:name]
+        - game[:users].each do |user|
+          td
+            - if user[:id] == current_user.id
+              = select_tag 'status', options_for_select(GameVisit.statuses), class: 'flat-select'
+            - else
+              div = user[:status] || 'unknown'

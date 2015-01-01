@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
 
   validates :slug, presence: true, uniqueness: true
 
-  def team_json(page = nil)
+  def team_hash(page = nil)
     page = page ? page.to_i : 1
     games = Game.active.page(page)
     users = self.users.includes(:game_visits)
