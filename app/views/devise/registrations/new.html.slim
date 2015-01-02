@@ -1,11 +1,7 @@
 .authform
   = simple_form_for resource_name, as: resource_name, url: registration_path(resource_name) do |f|
-    .input-group
-      = f.input_field :name, class: 'form-control', placeholder: 'Name'
-    .input-group
-      = f.input_field :email, class: 'form-control', placeholder: 'Email'
-    .input-group
-      = f.input_field :password, class: 'form-control', placeholder: 'Password'
-    .input-group
-      = f.input_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation'
-    = f.submit 'Sign up', class: 'btn btn-primary btn-lg btn-block'
+    = f.input_field :name, class: 'form-control', placeholder: 'Name'
+    = f.input_field :email, class: 'form-control', placeholder: 'Email'
+    = f.input_field :password, class: 'form-control', placeholder: 'Password'
+    = f.input_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation'
+    = f.submit 'Sign up', class: 'btn btn-primary btn-lg btn-block submit-btn'

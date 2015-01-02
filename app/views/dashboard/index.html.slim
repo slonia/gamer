@@ -14,4 +14,4 @@
       .panel-body
         ul.list-group
           - @games.each do |game|
-            li.list-group-item = game.name
+            li.list-group-item = link_to game.name, game

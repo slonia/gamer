@@ -12,7 +12,18 @@ class GamesController < ApplicationController
     end
   end
 
-  def game_params
-    params.require(:game).permit(:name, :date)
+  def edit
   end
+
+  def update
+  end
+
+  def show
+  end
+
+  private
+
+    def game_params
+      params.require(:game).permit(:name, :date)
+    end
 end

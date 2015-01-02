@@ -2,6 +2,7 @@ class Game < ActiveRecord::Base
   paginates_per 10
   has_many :game_visits
   has_many :users, through: :game_visits
+  belongs_to :added_by, class_name: 'User', foreign_key: :added_by_id
 
   scope :active, -> { where('date >= ?', DateTime.now.beginning_of_day).order(:date) }
   def visited_by(user)

@@ -173,54 +173,41 @@ td, th {
 }
 .authform {
   width: 400px;
-  height: 340px;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
+  min-height: 340px;
   background-color: #2d2f31;
   text-align: center;
   padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   label {
-    color: #d5d5d5 !important;
+    color: #ffffff !important;
   }
-  .input-group {
-    color: #d5d5d5;
-    height: 50px;
-    margin-top: 20px;
-    input, input:-webkit-autofill {
-      height: 50px;
-      color: #d5d5d5 !important;
+
+  .input-group-addon {
+    border: none;
+    border-radius: 0;
+    background-color: #22a86c;
+    color: #ffffff;
+    i {
+      width: 30px;
       font-size: 24px;
-      border-radius: 0;
-      border: none;
-      background-color: #424242 !important;
-    }
-    .input-group-addon {
-      border: none;
-      border-radius: 0;
-      background-color: #22a86c;
-      color: #d5d5d5;
-      i {
-        width: 30px;
-        font-size: 24px;
-      }
     }
   }
+
   input[type="submit"] {
     border-radius: 0;
     border: none;
     background-color: #22a86c;
-    color: #d5d5d5;
+    color: #ffffff;
   }
 }
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px #424242 inset;
-    color: #d5d5d5 !important;
-    -webkit-text-fill-color: #d5d5d5 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 .social-login {
   margin-top: 20px;
@@ -237,4 +224,16 @@ input:-webkit-autofill {
       color: #22a86c !important;
     }
   }
+}
+.form-control, .form-control:-webkit-autofill {
+  height: 50px;
+  color: #ffffff !important;
+  font-size: 24px;
+  border-radius: 0;
+  border: none;
+  background-color: #424242 !important;
+  margin-bottom: 20px;
+}
+.submit-btn {
+  margin-bottom: 20px;
 }

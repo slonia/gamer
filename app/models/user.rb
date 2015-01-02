@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :game_visits
   has_many :games, through: :game_visits
   has_many :identities
+  has_many :added_games, class_name: 'Game', foreign_key: :added_by_id
   belongs_to :team
 
 

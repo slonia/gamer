@@ -1,0 +1,8 @@
+.row
+  .col-xs-10
+    .panel.panel-success
+      .panel-heading
+        h2.panel-title = @game.name
+      .panel-body
+        = @game.date
+        = "Added by #{@game.added_by.try(:name)}"
