@@ -5,4 +5,4 @@ div
     = @user.email
   p
     ' User's team is
-    = @team.name
+    = @team.try(:name)

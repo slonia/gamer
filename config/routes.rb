@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :teams, param: :slug, only: [:index, :show]
   resource :dashboard, only: [:index]
+  resources :games
   match '/game_visits/:game_id', to: 'game_visits#set', via: :get
   match '/profile', to: 'users#show', via: :get
 

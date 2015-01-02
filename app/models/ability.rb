@@ -7,6 +7,9 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      if user.player? && !user.team
+        can :create, Game
+      end
     end
   end
 end

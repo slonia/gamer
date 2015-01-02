@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   belongs_to :team
 
 
-  enumerize :role, in: [:player, :admin], default: :player, predicates: true
+  enumerize :role, in: [:player, :captain, :admin], default: :player, predicates: true
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth, signed_in_resource)

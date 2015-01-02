@@ -7,6 +7,7 @@
       .input-group-addon = icon('key')
       = f.input_field :password, class: 'form-control'
     = f.input :remember_me, as: :boolean
+    = link_to 'Sign up', new_registration_path(resource_name)
     = f.submit 'Sign in', class: 'btn btn-primary btn-lg btn-block'
     ul.list-inline.social-login
       li = link_to(icon('twitter'), user_omniauth_authorize_path(:twitter))

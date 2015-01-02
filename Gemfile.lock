@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: d0f8a68f30d7ffb34e505845a693df27467424f3
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (3.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -105,6 +113,8 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.1)
     minitest (5.5.0)
+    momentjs-rails (2.8.3)
+      railties (>= 3.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -241,11 +251,13 @@ DEPENDENCIES
   capistrano-rails-console
   capistrano-rvm (~> 0.1.1)
   coffee-rails (~> 4.1.0)
+  datetimepicker-rails!
   devise
   enumerize
   font-awesome-sass
   jquery-rails
   kaminari
+  momentjs-rails
   nested_form
   omniauth
   omniauth-facebook
