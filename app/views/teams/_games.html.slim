@@ -1,0 +1,13 @@
+- games.each do |game|
+  tr
+    td.first-cell
+      .game-date
+        span.date = game[:date]
+        span.time = game[:time]
+      .game-title = game[:name]
+    - game[:users].each do |user|
+      td
+        - if user[:id] == current_user.id
+          = select_tag 'status', options_for_select(GameVisit.statuses), class: 'flat-select'
+        - else
+          div = user[:status] || 'unknown'

@@ -1,8 +1,8 @@
 class Team < ActiveRecord::Base
+  include Sluggable
+
   has_many :users
   accepts_nested_attributes_for :users
-
-  before_validation :set_slug
 
   validates :slug, presence: true, uniqueness: true
 
@@ -32,9 +32,4 @@ class Team < ActiveRecord::Base
     result
   end
 
-  private
-
-    def set_slug
-      self.slug = name.downcase.gsub(/\s/, '-')
-    end
 end

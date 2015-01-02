@@ -11,11 +11,12 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find_by_slug!(params[:slug])
-    if params[:page].nil? || (params[:page].to_s == '1')
-      @users = @team.users.pluck(:name)
-      @games = @team.team_hash
+    if request.xhr?
+      render(partial: 'teams/games', locals: { games: @team.team_hash(params[:page])})
     else
-      render json: { games: @team.team_json(params[:page]) }
+      @users = @team.users.pluck(:name)
+      @games = @team.team_hash(params[:page])
+      @total_pages = Game.active.page(1).total_pages
     end
   end
 end
