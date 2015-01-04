@@ -1,1 +1,17 @@
-h1 hi
+.row
+  .col-xs-6
+    .panel.panel-success
+      .panel-heading
+        h2.panel-title Players
+      .panel-body
+        ul.list-group
+          - @users.each do |user|
+            li.list-group-item = user.name
+  .col-xs-6
+    .panel.panel-success
+      .panel-heading
+        h2.panel-title Team requests
+      .panel-body
+        ul.list-group
+          - @team_requests.each do |team_request|
+            li.list-group-item = team_request.user.name
