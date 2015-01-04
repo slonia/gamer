@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  load_and_authorize_resource find_by: :slug
+  load_and_authorize_resource find_by: :slug, id_param: :slug
 
   def index
     if request.xhr?
@@ -10,7 +10,11 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find_by_slug!(params[:slug])
+    @team_requests = @team.team_requests.pending
+    @users = @team.users
+  end
+
+  def visits
     if request.xhr?
       render(partial: 'teams/games', locals: { games: @team.team_hash(params[:page])})
     else

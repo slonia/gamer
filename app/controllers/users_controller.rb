@@ -3,10 +3,5 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    if request.xhr?
-      render json: @user.data_json
-    else
-      render text: '', layout: true
-    end
   end
 end

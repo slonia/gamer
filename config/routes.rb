@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
-  resources :teams, param: :slug, only: [:index, :show]
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
+  resources :teams, param: :slug do
+    get :visits, on: :member
+    resources :team_requests
+  end
   resource :dashboard, only: [:index]
   resources :games
   match '/game_visits/:game_id', to: 'game_visits#set', via: :get

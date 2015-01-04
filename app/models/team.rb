@@ -2,6 +2,7 @@ class Team < ActiveRecord::Base
   include Sluggable
 
   has_many :users
+  has_many :team_requests
   accepts_nested_attributes_for :users
 
   validates :slug, presence: true, uniqueness: true

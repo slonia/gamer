@@ -1,0 +1,8 @@
+div
+  table#tblheader.flat-table.flat-table-3
+    tr
+      th = t('.games').upcase
+      - @users.each do |user|
+        th = user.upcase
+  table#tblbody.flat-table.flat-table-3 *{ 'data-max_pages' => "#{@total_pages}", 'data-current_page' => 1}
+    = render 'games', games: @games

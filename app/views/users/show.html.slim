@@ -2,8 +2,7 @@
   .col-xs-10
     .panel
       .panel-heading
-        h2.panel-title
-          | {{user.name}}
+        h2.panel-title = @user.name
       .panel-body
         div ng-show="user.team"
           ' Игрок команды
