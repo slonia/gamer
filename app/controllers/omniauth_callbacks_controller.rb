@@ -1,11 +1,11 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def omniauth_action
     @user = User.find_for_oauth(env["omniauth.auth"], current_user)
-    if @user
-      sign_in_and_redirect @user, event: :authentication
+    if @user.created_from_identity
+      sign_in @user
+      redirect_to edit_user_registration_path
     else
-      flash[:alert] = 'Error'
-      redirect_to root_path
+      sign_in_and_redirect @user, event: :authentication
     end
   end
 

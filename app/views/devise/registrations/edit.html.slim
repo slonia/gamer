@@ -1,9 +1,10 @@
 .authform
-  = simple_form_for resource_name, as: resource_name, url: registration_path(resource_name) do |f|
+  = simple_form_for resource_name, as: resource_name, url: registration_path(resource_name), method: :put do |f|
     = f.input_field :name, class: 'form-control', placeholder: 'Name'
     = f.input_field :email, class: 'form-control', placeholder: 'Email'
-    = f.input_field :password, class: 'form-control', placeholder: 'Password'
-    = f.input_field :password_confirmation, class: 'form-control', placeholder: 'Password confirmation'
     = f.input_field :request_for_team_id, collection: Team.all, value_method: :id, label_method: :name
     = f.input_field :new_team, class: 'form-control', placeholder: 'New team'
+    = f.input_field :password, as: :hidden
+    = f.input_field :password_confirmation, as: :hidden
+    = f.input_field :current_password, as: :hidden
     = f.submit 'Sign up', class: 'btn btn-primary btn-lg btn-block submit-btn'

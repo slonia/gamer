@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :validatable, :omniauthable
 
   before_validation :check_password, on: :create
-  after_create :after_create_actions
+  after_save :after_save_actions, unless: :created_from_identity
 
   has_many :game_visits
   has_many :games, through: :game_visits
@@ -18,19 +18,24 @@ class User < ActiveRecord::Base
 
   enumerize :role, in: [:player, :captain, :admin], default: :player, predicates: true
 
-  attr_accessor :request_for_team_id, :new_team
+  attr_accessor :request_for_team_id, :new_team, :created_from_identity
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth, signed_in_resource)
-    if identity
-      user = signed_in_resource ? signed_in_resource : identity.user
+    user = signed_in_resource ? signed_in_resource : identity.user
 
-      if identity.user != user
-        identity.user = user
-        identity.save!
-      end
-      user
+    if user.nil?
+      email = 'temp_' + auth.uid.to_s + '@' + auth.provider + '.com'
+      user = User.find_or_initialize_by(email: email)
+      user.name = auth.uid
+      user.created_from_identity = true
+      user.save!
     end
+    if identity.user != user
+      identity.user = user
+      identity.save!
+    end
+    user
   end
 
   def data_json
@@ -56,12 +61,10 @@ class User < ActiveRecord::Base
       self.password = Devise.friendly_token.first(8) unless self.password
     end
 
-    def after_create_actions
+    def after_save_actions
       if self.new_team.present?
-        self.role = :captain
         team = Team.create(name: self.new_team)
-        self.team_id = team
-        self.save
+        self.update_columns(role: :captain, team_id: team.id)
       elsif self.request_for_team_id
         team = Team.find(self.request_for_team_id)
         TeamRequest.create(team: team, user: self)
