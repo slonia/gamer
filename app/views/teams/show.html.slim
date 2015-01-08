@@ -1,4 +1,11 @@
 .row
+  .col-xs-12
+    .panel.panel-success
+      .panel-heading
+        h2.panel-title = @team.name
+      .panel-body
+        = link_to 'Game visits', visits_team_path(slug: @team.slug)
+.row
   .col-xs-6
     .panel.panel-success
       .panel-heading
@@ -14,4 +21,8 @@
       .panel-body
         ul.list-group
           - @team_requests.each do |team_request|
-            li.list-group-item = team_request.user.name
+            li.list-group-item
+              =' team_request.user.name
+              .btn-group
+                = link_to 'Accept', accept_team_request_path(slug: team_request.team.slug, id: team_request.user.id), class: 'btn btn-success'
+                = link_to 'Reject', reject_team_request_path(slug: team_request.team.slug, id: team_request.user.id), class: 'btn btn-danger'

@@ -55,6 +55,11 @@ class User < ActiveRecord::Base
     }
   end
 
+  [:twitter, :facebook, :vkontakte].each do |social|
+    define_method "has_#{social}?" do
+      identities.find { |i| i.provider.to_sym == social}
+    end
+  end
   private
 
     def check_password

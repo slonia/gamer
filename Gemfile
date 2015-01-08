@@ -23,6 +23,7 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machine'
 gem 'uglifier', '>= 1.3.0'
+gem 'sidekiq'
 
 group :development do
   gem 'capistrano', '~> 3.0.1'

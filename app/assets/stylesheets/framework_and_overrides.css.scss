@@ -99,7 +99,7 @@ section {
       font-size: 20px;
       color: #ffffff;
       background-color:#2d2f31;
-      a {
+      & > a {
         text-decoration: none;
         color: #ffffff;
         display: block;
