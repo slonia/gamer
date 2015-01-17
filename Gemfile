@@ -19,11 +19,12 @@ gem 'omniauth-vkontakte'
 gem 'pg'
 gem 'rails', '4.2.0'
 gem 'sass-rails', '~> 5.0'
+gem 'sidekiq'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'state_machine'
 gem 'uglifier', '>= 1.3.0'
-gem 'sidekiq'
+gem 'whenever', require: false
 
 group :development do
   gem 'capistrano', '~> 3.0.1'

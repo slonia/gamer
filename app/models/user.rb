@@ -18,25 +18,34 @@ class User < ActiveRecord::Base
 
   enumerize :role, in: [:player, :captain, :admin], default: :player, predicates: true
 
+  scope :weekly_enabled, -> { where(weekly_reminder: true) }
+
   attr_accessor :request_for_team_id, :new_team, :created_from_identity
 
-  def self.find_for_oauth(auth, signed_in_resource = nil)
-    identity = Identity.find_for_oauth(auth, signed_in_resource)
-    user = signed_in_resource ? signed_in_resource : identity.user
+  class << self
+    def find_for_oauth(auth, signed_in_resource = nil)
+      identity = Identity.find_for_oauth(auth, signed_in_resource)
+      user = signed_in_resource ? signed_in_resource : identity.user
 
-    if user.nil?
-      email = 'temp_' + auth.uid.to_s + '@' + auth.provider + '.com'
-      user = User.find_or_initialize_by(email: email)
-      user.name = auth.uid
-      user.created_from_identity = true
-      user.save!
+      if user.nil?
+        email = 'temp_' + auth.uid.to_s + '@' + auth.provider + '.com'
+        user = User.find_or_initialize_by(email: email)
+        user.name = auth.uid
+        user.created_from_identity = true
+        user.save!
+      end
+      if identity.user != user
+        identity.user = user
+        identity.save!
+      end
+      user
     end
-    if identity.user != user
-      identity.user = user
-      identity.save!
+
+    def send_weekly_emails
+      User.weekly_enabled.pluck(:id).each { |id| WeeklyEmailWorker.perform_async(id) }
     end
-    user
   end
+
 
   def data_json
     identities = self.identities
@@ -71,6 +80,9 @@ class User < ActiveRecord::Base
         false
       end
     end
+  end
+
+  def send_weekly_email
   end
 
   private

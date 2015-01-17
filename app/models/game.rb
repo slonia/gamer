@@ -5,7 +5,15 @@ class Game < ActiveRecord::Base
   belongs_to :added_by, class_name: 'User', foreign_key: :added_by_id
 
   scope :active, -> { where('date >= ?', DateTime.now.beginning_of_day).order(:date) }
+  scope :for_next_week, -> { where('date >= ? AND date <= ?', (DateTime.now + 1.week).monday.beginning_of_day, (DateTime.now + 1.week).sunday.end_of_day).order(:date) }
+
   def visited_by(user)
     self.game_visits.where(user_id: user).last
+  end
+
+  def start_date
+  end
+
+  def start_time
   end
 end

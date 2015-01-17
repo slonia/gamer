@@ -7,4 +7,10 @@ class AppMailer < ActionMailer::Base
     @team = user.team
     mail(to: @user.email, subject: 'User created')
   end
+
+  def weekly_mail(user)
+    @user = user
+    @games = Game.for_next_week
+    mail(to: @user.email, subject: 'Next week games')
+  end
 end
