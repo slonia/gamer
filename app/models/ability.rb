@@ -8,6 +8,7 @@ class Ability
     else
       can :read, :all
       can :visits, Team
+      can :weekly_toggle, User
       if user.player? && !user.team
         can :create, Game
       end

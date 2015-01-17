@@ -15,11 +15,6 @@ html, body, main {
 html, body {
   background: image-url('back.png');
 }
-// make all images responsive by default
-img {
-  @extend .img-responsive;
-  margin: 0 auto;
-  }
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
@@ -112,3 +107,35 @@ section {
 
   }
 }
+ .form-group {
+    margin: 0;
+    position: relative;
+  }
+
+  .form-group + .form-group {
+    margin: 10px 0 0 0;
+  }
+
+  .form-group.w-icon {
+    .fa {
+      border-right: none;
+           bottom: 9px;
+           color: #fff;;
+           display: block;
+           font-size: 14px;
+           left: 0;
+           line-height: 50px;
+           font-size: 25px;
+           position: absolute;
+           text-align: center;
+           top: 0px;
+           width: 50px;;
+           z-index: 1002;
+           background-color: #22a86c;
+           height: 50px;
+    }
+    input {
+      padding-left: 54px;
+      outline: none !important;
+    }
+  }

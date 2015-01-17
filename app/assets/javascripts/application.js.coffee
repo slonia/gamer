@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require bootstrap
 #= require games
+#= require profile
 #= require moment
 #= require bootstrap-datetimepicker
 #= require pickers

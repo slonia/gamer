@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
 
   has_many :game_visits
   has_many :games, through: :game_visits
-  has_many :identities
+  has_many :identities, dependent: :destroy
   has_many :added_games, class_name: 'Game', foreign_key: :added_by_id
-  has_many :team_requests
+  has_many :team_requests, dependent: :destroy
   belongs_to :team
 
   enumerize :role, in: [:player, :captain, :admin], default: :player, predicates: true
@@ -60,6 +60,19 @@ class User < ActiveRecord::Base
       identities.find { |i| i.provider.to_sym == social}
     end
   end
+
+  def weekly_toggle(provider)
+    if provider == 'email'
+      self.update_column(:weekly_reminder, !self.weekly_reminder)
+    else
+      if identity = self.send("has_#{provider}?")
+        identity.update_column(:weekly_reminder, !identity.weekly_reminder)
+      else
+        false
+      end
+    end
+  end
+
   private
 
     def check_password

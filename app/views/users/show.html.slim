@@ -14,24 +14,39 @@
           li.list-group-item
             = icon('envelope')
             span = @user.email
+            span.weekly
+              = check_box_tag :email, true, current_user.weekly_reminder, class: 'weekly-reminder'
+              = label_tag :email, 'Weekly reminder'
           li.list-group-item
             = icon('twitter')
             span
-              - if @user.has_twitter?
-                | Подключено
+              - if twitter = @user.has_twitter?
+                = image_tag(twitter.image_url, class: 'img-circle')
+                span = twitter.name
+                span.weekly
+                  = check_box_tag :twitter, true, twitter.weekly_reminder, class: 'weekly-reminder'
+                  = label_tag :twitter, 'Weekly reminder'
               - else
                 = link_to 'Add', user_omniauth_authorize_path(:twitter)
           li.list-group-item
             = icon('facebook')
             span
-              - if @user.has_facebook?
-                | Подключено
+              - if facebook = @user.has_facebook?
+                = image_tag(facebook.image_url, class: 'img-circle')
+                span = facebook.name
+                span.weekly
+                  = check_box_tag :facebook, true, facebook.weekly_reminder, class: 'weekly-reminder'
+                  = label_tag :facebook, 'Weekly reminder'
               - else
                 = link_to 'Add', user_omniauth_authorize_path(:facebook)
           li.list-group-item
             = icon('vk')
             span
-              - if @user.has_vkontakte?
-                | Подключено
+              - if vk = @user.has_vkontakte?
+                = image_tag(vk.image_url, class: 'img-circle')
+                span = vk.name
+                span.weekly
+                  = check_box_tag :vkontakte, true, vk.weekly_reminder, class: 'weekly-reminder'
+                  = label_tag :vkontakte, 'Weekly reminder'
               - else
                 = link_to 'Add', user_omniauth_authorize_path(:vkontakte)

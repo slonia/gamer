@@ -1,11 +1,11 @@
 .authform
   = simple_form_for resource_name, as: resource_name, url: session_path(resource_name) do |f|
-    .input-group
-      .input-group-addon = icon('user')
+    .form-group.w-icon
       = f.input_field :email, class: 'form-control'
-    .input-group
-      .input-group-addon = icon('key')
+      span.fa.fa-user
+    .form-group.w-icon
       = f.input_field :password, class: 'form-control'
+      span.fa.fa-key
     = f.input :remember_me, as: :boolean
     = link_to 'Sign up', new_registration_path(resource_name)
     = f.submit 'Sign in', class: 'btn btn-primary btn-lg btn-block'

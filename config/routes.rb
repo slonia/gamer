@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'dashboard/index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', registrations: 'registrations' }
+  match '/users/:provider/weekly_toggle', to: "users#weekly_toggle", via: :get, as: :weekly_toggle
   resources :teams, param: :slug do
     get :visits, on: :member
     resources :team_requests
