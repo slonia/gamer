@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    if (@game = Game.create(game_params)) && @game.update_column(:added_by_id, current_user.id)
+    if @game = Game.create(game_params.merge(added_by_id: current_user.id))
       redirect_to root_path
     else
       render 'new'

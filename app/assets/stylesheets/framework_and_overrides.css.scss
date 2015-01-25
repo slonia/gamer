@@ -69,6 +69,7 @@ section {
 }
 .panel {
   border: 0px;
+  margin-bottom: 0px;
   .panel-heading {
     color: #ffffff;
     background-color: #22a86c;
@@ -139,3 +140,6 @@ section {
       outline: none !important;
     }
   }
+.panel-body {
+  background-color: #2d2f31;
+}

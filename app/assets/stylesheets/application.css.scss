@@ -32,6 +32,16 @@ input:-webkit-autofill {
   text-align:center;
   padding: 0px;
   text-transform: uppercase;
+  td:first-child, th:first-child {
+    width: 27% !important;
+  }
+  td, th {
+    width: 12% !important;
+    height: 80px;
+    text-align:center;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 }
 
 #tblbody {
@@ -43,6 +53,16 @@ input:-webkit-autofill {
   margin-top: 80px;
   padding: 0px;
   overflow: auto;
+  td:first-child, th:first-child {
+    width: 27% !important;
+  }
+  td, th {
+    width: 12% !important;
+    height: 80px;
+    text-align:center;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 }
 #tblbody tr {
   min-height: 35px;
@@ -52,16 +72,7 @@ input:-webkit-autofill {
 #tblheader tr {
   height: 60px;
 }
-td:first-child, th:first-child {
-  width: 27% !important;
-}
-td, th {
-  width: 12% !important;
-  height: 80px;
-  text-align:center;
-  word-wrap: break-word;
-  word-break: break-all;
-}
+
 
 
 .flat-table {

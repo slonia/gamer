@@ -118,7 +118,7 @@ GEM
     mime-types (2.4.3)
     mini_portile (0.6.1)
     minitest (5.5.0)
-    momentjs-rails (2.8.3)
+    momentjs-rails (2.9.0)
       railties (>= 3.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)

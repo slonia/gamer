@@ -1,4 +1,10 @@
-= simple_form_for @game do |f|
-  = f.input :name
-  = f.input :date, as: :datetime_picker
-  = f.submit
+.row
+  .col-xs-6
+    .panel.panel-success
+      .panel-heading
+        h2.panel-title Game
+    .panel-body
+      = simple_form_for @game do |f|
+        = f.input_field :name
+        = f.input_field :date, as: :datetime_picker
+        = f.submit

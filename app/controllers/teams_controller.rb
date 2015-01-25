@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
   def show
     @team_requests = @team.team_requests.pending
     @users = @team.users
+    @games = Game.finished_in_season
   end
 
   def visits

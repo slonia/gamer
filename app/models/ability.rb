@@ -9,6 +9,7 @@ class Ability
       can :read, :all
       can :visits, Team
       can :weekly_toggle, User
+      can :create, Game
       if user.player? && !user.team
         can :create, Game
       end
