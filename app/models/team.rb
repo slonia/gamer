@@ -15,8 +15,8 @@ class Team < ActiveRecord::Base
     games.each do |game|
       record = {
         name: game.name,
-        date: game.date.strftime('%d.%m'),
-        time: game.date.strftime('%H:%M'),
+        date: game.start_date,
+        time: game.start_time,
         id: game.id
       }
       users_array = []

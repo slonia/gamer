@@ -12,8 +12,10 @@ class Game < ActiveRecord::Base
   end
 
   def start_date
+    self.date.strftime("%d.%m")
   end
 
   def start_time
+    self.date.strftime("%H:%M")
   end
 end

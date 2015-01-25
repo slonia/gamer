@@ -42,7 +42,13 @@ class User < ActiveRecord::Base
     end
 
     def send_weekly_emails
-      User.weekly_enabled.pluck(:id).each { |id| WeeklyEmailWorker.perform_async(id) }
+      User.weekly_enabled.each do |user|
+        if Rails.env.production?
+          WeeklyEmailWorker.perform_async(user.id)
+        else
+          user.send_weekly_email
+        end
+      end
     end
   end
 
@@ -83,6 +89,7 @@ class User < ActiveRecord::Base
   end
 
   def send_weekly_email
+    AppMailer.weekly_mail(self).deliver!
   end
 
   private

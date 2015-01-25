@@ -7,3 +7,8 @@ div
     ' User's team is
     = @team.try(:name)
 
+  p
+    | Next week games:
+    ul
+      - @games.each do |game|
+        li = "#{game.start_date} at #{game.start_time} - #{game.name}"
